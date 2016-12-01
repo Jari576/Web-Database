@@ -12,13 +12,20 @@
     <div>
         Task name:<br>
         <input type="text" name="taskname" value=""><br>
+        Importance (between 1 and 5): <br>
+        <input type="number" name="importance" min="1" max="5"><br>
         Duedate:<br>
         <input type="date" name="duedate">
     </div>
-    <button onclick="">Add tasks</button>
+    <button onclick="addToTaskArray(new task(document.getElementsByName(taskname), document.getElementsByName(importance),
+    document.getElementsByName(duedate)))">Add tasks
+    </button>
 </form>
 
 <script>
+
+    var tasks = [];
+
     function task(name, importance, duedate) {
         this.name = name;
         this.importance = importance;
@@ -27,8 +34,12 @@
             return this.name + "\n" + this.importance + "\n" + this.duedate;
         }
     }
-</script>
 
+    function addToTaskArray(task) {
+        tasks += task;
+    }
+
+</script>
 <h1>Tasks</h1>
 <p id="task1"></p>
 </body>
