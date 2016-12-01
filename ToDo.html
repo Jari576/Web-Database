@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <title>Get shit DONE</title>
-    </head>
-    
-    <body>
-        <h1><img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/2133/flat_icons-graficheria.it-06.png" alt="afbeelding" width="142" height="142">Get shit DONE in no time</h1>
-        
-        <form action="/html/tags/html_form_tag_action.cfm" method="post">
-        <div>
+<head>
+    <title>Get shit DONE</title>
+</head>
+
+<body>
+<h1><img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/2133/flat_icons-graficheria.it-06.png"
+         alt="afbeelding" width="142" height="142">Get shit DONE in no time</h1>
+
+<form id="input">
+    <div>
         Task name:<br>
         <input type="text" name="taskname" value=""><br>
         Duedate:<br>
         <input type="date" name="duedate">
-        </div>
-        <input type="submit" value="Add task">
-        </form>
-        <h1>Tasks</h1>
-        <p>task1: do something</p>
-    </body>
+    </div>
+    <button onclick="">Add tasks</button>
+</form>
+
+<script>
+    function task(name, importance, duedate) {
+        this.name = name;
+        this.importance = importance;
+        this.duedate = duedate;
+        this.getTaskInfo = function () {
+            return this.name + "\n" + this.importance + "\n" + this.duedate;
+        }
+    }
+</script>
+
+<h1>Tasks</h1>
+<p id="task1"></p>
+</body>
 </html>
 
