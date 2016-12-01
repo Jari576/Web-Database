@@ -8,23 +8,33 @@
 <h1><img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/2133/flat_icons-graficheria.it-06.png"
          alt="afbeelding" width="142" height="142">Get shit DONE in no time</h1>
 
-<form id="input">
-    <div>
-        Task name:<br>
-        <input type="text" name="taskname" value=""><br>
-        Importance (between 1 and 5): <br>
-        <input type="number" name="importance" min="1" max="5"><br>
-        Duedate:<br>
-        <input type="date" name="duedate">
-    </div>
-    <button onclick="addToTaskArray(new task(document.getElementsByName(taskname), document.getElementsByName(importance),
-    document.getElementsByName(duedate)))">Add tasks
-    </button>
+
+<form id="form1">
+    Task name:<br>
+    <input id="name" type="text" name="taskname" value=""><br>
+    Importance (between 1 and 5): <br>
+    <input type="number" name="importance" min="1" max="5"><br>
+    Duedate:<br>
+    <input type="date" name="duedate">
 </form>
+<button id="addtask">Add tasks</button>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-
-    var tasks = [];
+    $(document).ready(function () {
+        $("#addtask").click(function () {
+            var x = document.getElementById("form1");
+            var text = "";
+            var i;
+            for (i = 0; i < x.length; i++) {
+                text += x.elements[i].value + "<br>";
+            }
+            text += "<br>";
+            text = "<li>" + text + "</li>";
+            $("ol").append(text);
+        });
+    });
 
     function task(name, importance, duedate) {
         this.name = name;
@@ -34,14 +44,11 @@
             return this.name + "\n" + this.importance + "\n" + this.duedate;
         }
     }
-
-    function addToTaskArray(task) {
-        tasks += task;
-    }
-
 </script>
 <h1>Tasks</h1>
-<p id="task1"></p>
+<ol>
+
+</ol>
 </body>
 </html>
 
