@@ -22,6 +22,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
+    var number = 0;
     $(document).ready(function () {
         $("#addtask").click(function () {
             var x = document.getElementById("form1");
@@ -30,8 +31,8 @@
             for (i = 0; i < x.length; i++) {
                 text += x.elements[i].value + "<br>";
             }
-            text += "<br>";
-            text = "<li>" + text + "</li>";
+            text = "<li id='" + number + "'>"  + text + "<button id='" + number + "button'>Delete task</button></li>";
+            number++;
             $("ol").append(text);
         });
     });
@@ -51,4 +52,3 @@
 </ol>
 </body>
 </html>
-
