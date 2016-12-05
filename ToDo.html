@@ -32,6 +32,9 @@
                 text += x.elements[i].value + "<br>";
             }
             text = "<li id='" + number + "'>"  + text + "<button id='" + number + "button'>Delete task</button></li>";
+            $("#" + number + "button").click(function () {
+
+            });
             number++;
             $("ol").append(text);
         });
@@ -48,7 +51,6 @@
 </script>
 <h1>Tasks</h1>
 <ol>
-
 </ol>
 </body>
 </html>
