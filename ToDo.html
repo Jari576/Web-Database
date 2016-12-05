@@ -23,6 +23,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
     var number = 0;
+    var taskarray = [];
     $(document).ready(function () {
         $("#addtask").click(function () {
             var x = document.getElementById("form1");
@@ -31,14 +32,20 @@
             for (i = 0; i < x.length; i++) {
                 text += x.elements[i].value + "<br>";
             }
-            text = "<li id='" + number + "'>"  + text + "<button id='" + number + "button'>Delete task</button></li>";
-            $("#" + number + "button").click(function () {
-
-            });
+            taskarray.push(task(x.elements[0], x.elements[1], x.elements[2]));
+            writeTaskToHTML(number, text);
             number++;
-            $("ol").append(text);
         });
     });
+
+    function writeTaskToHTML(number, text) {
+        text = "<li class='" + number + "'>" + text + "<button onclick='deleteListItem(" + number + ")'>Delete task</button></li>";
+        $("ol").append(text);
+    }
+
+    function deleteListItem(id) {
+        $("li").remove("." + id);
+    }
 
     function task(name, importance, duedate) {
         this.name = name;
@@ -51,7 +58,8 @@
 
 </script>
 <h1>Tasks</h1>
-<ol>
+<ol id="tasklist">
 </ol>
+<p id="arraylist"></p>
 </body>
 </html>
