@@ -44,14 +44,16 @@
             }
             var temptask = new task(x.elements[0].value, x.elements[1].value, x.elements[2].value, number)
             taskarray.push(temptask);
+            writeTaskArrayToHTML(taskarray);
             writeTaskToHTML({task: temptask});
             number++;
         });
     });
 
-    function whriteTaskArrayToHTML(array) {
-        for(i = 0; i<taskarray.size; i++) {
-            writeTaskToHTML({task: taskarray[i].getName()});
+    function writeTaskArrayToHTML(array) {
+        for(i = 0; i<array.size; i++) {
+            //writeTaskToHTML({task: taskarray[i].getName()});
+            console.log(array[i].getName());
         }
     }
 
@@ -64,7 +66,6 @@
                 "<td>" + task.getDuedate() + "</td>" +
                 "<td> <button onclick='deleteListItem(" + task.getNumber() + ")'>Delete task</button> </td>" +
             "</tr>";
-            //"<li class='" + number + "'>" + text + "<button onclick='deleteListItem(" + number + ")'>Delete task</button></li>";
         $("table").append(text);
     }
 
@@ -95,7 +96,7 @@
 <h1>Tasks</h1>
 <table style="width:100%" id="tasklist">
     <tr align="left">
-        <th>Taks</th>
+        <th>Tasks</th>
         <th>Importance</th>
         <th>Duedate</th>
         <th>Delete Task</th>
