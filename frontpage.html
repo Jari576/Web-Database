@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <link rel="stylesheet" href="Styling.css">
-    </head>
-    <body> <!-- style="background-color: lavenderblush" -->
-        <img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/2133/flat_icons-graficheria.it-06.png" alt="afbeelding" width="142" height="142">
-        <h1>Get shit done</h1>
-        
-        <form>
-            <div>
-                Username:<br>
-                <input type="text" name="user" value=""><br> <br>
-                Password:<br>
-                <input type="password" name="pass">
-            </div> <br>
-            <button type="button" onclick="window.location.href='ToDo.html'">Login</button>
-        </form>
-    </body>
+<head>
+    <link rel="stylesheet" href="Styling.css">
+</head>
+<body> <!-- style="background-color: lavenderblush" -->
+
+<ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+</ul>
+
+<img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/2133/flat_icons-graficheria.it-06.png" alt="afbeelding"
+     width="142" height="142">
+<h1>Get shit done</h1>
+
+<form>
+    <div>
+        Username:<br>
+        <input type="text" name="user" value=""><br> <br>
+        Password:<br>
+        <input type="password" name="pass">
+    </div>
+    <br>
+    <!--  <button type="button" onclick="window.location.href='ToDo.html'">Login</button> -->
+    <a href="ToDo.html">
+        <button type="button">Login</button>
+    </a>
+</form>
+</body>
 </html>
