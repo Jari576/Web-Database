@@ -16,6 +16,9 @@ script {
 form {
     font-family: Calibri;
 }
+table {
+    font-family: Calibri;
+}
 ul {
     list-style-type: none;
     margin: 0;
