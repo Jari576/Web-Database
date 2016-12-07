@@ -48,11 +48,11 @@
             }else {
                 alert("All fields should be filled out");
             }
-
         });
     });
 
     function writeTaskArrayToHTML(array) {
+        var i;
         for(i = 0; i<array.size; i++) {
             //writeTaskToHTML({task: taskarray[i].getName()});
             console.log(array[i].getName());
@@ -108,7 +108,7 @@
             }
             return true;
         }
-    }
+    };
 </script>
 <h1>Tasks</h1>
 <table style="width:100%" id="tasklist">
