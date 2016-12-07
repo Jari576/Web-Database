@@ -1,5 +1,5 @@
 var main = function () {
-    "use strict";
+        "use strict";
     var addCommentFromInputBox = function () {
         var $new_comment;
         if ($(".comment-input input").val() !== "") {
