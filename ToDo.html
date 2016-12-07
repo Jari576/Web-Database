@@ -43,7 +43,14 @@
                 alert("All fields should be filled out");
                 return;
             }
-            for()
+
+            for(i=0; i<taskarray.size; i++) {
+                if(x.elements[1].value == taskarray[i].getImportance()){
+                    alert("no two tasks can have the same importance");
+                    return;
+                }
+            }
+
             var temptask = new task(x.elements[0].value, x.elements[1].value, x.elements[2].value, number)
             taskarray.push(temptask);
             writeTaskArrayToHTML(taskarray);
@@ -64,12 +71,16 @@
         var task = parameters.task;
         var text =
             "<tr class='" + task.getNumber() + "'>" +
-                "<td>" + task.getName() + "</td>" +
+                "<td id='" + task.getNumber() + "'>" + task.getName() + " <button onclick='deleteListItem(" + task.getNumber() + ")'>change</button></td>" +
                 "<td>" + task.getImportance() + "</td>" +
                 "<td>" + task.getDuedate() + "</td>" +
                 "<td> <button onclick='deleteListItem(" + task.getNumber() + ")'>Delete task</button> </td>" +
             "</tr>";
         $("table").append(text);
+    }
+
+    function changetask(id, type) {
+        $("#" + id + ", " + type).html("<b>Hello world!</b>");
     }
 
     function deleteListItem(id) {
@@ -109,7 +120,7 @@
             }
             return true;
         }
-    };
+    }
 </script>
 <h1>Tasks</h1>
 <table style="width:100%" id="tasklist">
