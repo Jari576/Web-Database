@@ -21,14 +21,13 @@
 <form id="form1">
     Task name:<br>
     <input id="name" type="text" name="taskname" value=""><br><br>
-    Importance (between 1 and 5): <br>
-    <input type="number" name="importance" min="1" max="5"><br><br>
+    Importance: <br>
+    <input type="number" name="importance"><br><br>
     Duedate:<br>
     <input type="date" name="duedate">
 </form>
 <br>
 <button title="Click this button to add the task to the list" id="addtask">Add tasks</button>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
@@ -37,16 +36,17 @@
     $(document).ready(function () {
         $("#addtask").click(function () {
             var x = document.getElementById("form1");
-            var text = "";
-            var i;
-            for (i = 0; i < x.length; i++) {
-                text += x.elements[i].value + "<br>";
+
+            if(x.elements[0].value!="" && x.elements[1].value!="" && x.elements[2].value!=""){
+                var temptask = new task(x.elements[0].value, x.elements[1].value, x.elements[2].value, number)
+                taskarray.push(temptask);
+                writeTaskArrayToHTML(taskarray);
+                writeTaskToHTML({task: temptask});
+                number++;
+            }else {
+                alert("All fields should be filled out");
             }
-            var temptask = new task(x.elements[0].value, x.elements[1].value, x.elements[2].value, number)
-            taskarray.push(temptask);
-            writeTaskArrayToHTML(taskarray);
-            writeTaskToHTML({task: temptask});
-            number++;
+
         });
     });
 
@@ -59,7 +59,7 @@
 
     function writeTaskToHTML(parameters) {
         var task = parameters.task;
-        text =
+        var text =
             "<tr class='" + task.getNumber() + "'>" +
                 "<td>" + task.getName() + "</td>" +
                 "<td>" + task.getImportance() + "</td>" +
@@ -90,8 +90,23 @@
         this.getNumber = function () {
             return this.number;
         };
+        this.equals = function (parameters) {
+            if(!(parameters instanceof task)) {
+                return false;
+            }
+            var tasktocheck =  parameters.task;
+            if(!tasktocheck.getName.equals(this.name)){
+                return false;
+            }
+            if(!tasktocheck.getImportance.equals(this.importance)){
+                return false;
+            }
+            if(!tasktocheck.getDuedate.equals(this.duedate)){
+                return false;
+            }
+            return true;
+        }
     }
-
 </script>
 <h1>Tasks</h1>
 <table style="width:100%" id="tasklist">
