@@ -23,6 +23,9 @@ $(document).ready(function () {
         taskarray.toHTML();
         number++;
     });
+    $("#alfabet").click(function () {
+       taskarray.sortByAlphabet();
+    });
 });
 
 function writeTaskToHTML(parameters) {
@@ -75,7 +78,17 @@ function taskArray() {
     this.sortByImportance = function () {
         this.array.sort(function(a, b){return a.getImportance() - b.getImportance()});
         this.toHTML();
-    }
+    };
+    this.sortByAlphabet = function () {
+        this.array.sort(function(a, b){
+            var x = a.getName().toLowerCase();
+            var y = b.getName().toLowerCase();
+            if (x < y) {return -1;}
+            if (x > y) {return 1;}
+            return 0;
+        });
+        this.toHTML();
+    };
 }
 
 function task(name, importance, duedate, number) {
