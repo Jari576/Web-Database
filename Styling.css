@@ -16,9 +16,18 @@ header {
 th#headerlogo{
     text-align: left;
 }
-th#headertitle{
-    text-align: center;
+/* CSS assignment 3 obligated: CSS animation */
+@keyframes title {
+    from {color: white;}
+    to {color: aqua;}
 }
+th#headertitle {
+    text-align: center;
+    color: white;
+    animation-name: title;
+    animation-duration: 30s;
+}
+
 /*CSS assignment 3 obligated: position relative */
 th#headerlogin{
     text-align: right;
@@ -60,7 +69,7 @@ table#tasklist{
     text-align: left;
     width: 100%;
 }
-/* CSS assignment 3 obligated: absolute */
+/* CSS assignment 3 obligated: position absolute */
 table#frontpagetable {
     font-family: Calibri;
     text-align: center;
