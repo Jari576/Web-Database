@@ -72,13 +72,13 @@ function getToday() {
 }
 
 function changetask1(id, type) {
-    $("#" + id + type).html("<input id='name' type='text' name='taskname'><button onclick='changetask2()'>change</button>");
+    $("#" + id + type).html("<input id='namechanger' type='text' name='taskname'><button onclick='changetask2()'>change</button>");
 }
 
 function changetask2(id, type) {
-    var x = document.getElementById(name);
+    var x = document.getElementById("namechanger").value;
     console.log(x);
-    $("#" + id + type).html();
+    $("#" + id + type).html(x);
 }
 
 function deleteListItem(id) {
