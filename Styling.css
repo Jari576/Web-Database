@@ -1,14 +1,17 @@
 body {
     background-color: powderblue;
 }
+/*CSS assignment 3 obligated: margin, padding, border */
 header {
-    padding: 1em;
+    margin: 1px;
+    padding: 5px;
+    border: 5px powderblue;
     color: white;
     background-color: #333333;
     clear: left;
     text-align: center;
     font-family: Calibri;
-    border: 5px powderblue;
+
 }
 th#headerlogo{
     text-align: left;
@@ -16,8 +19,11 @@ th#headerlogo{
 th#headertitle{
     text-align: center;
 }
+/*CSS assignment 3 obligated: position relative */
 th#headerlogin{
     text-align: right;
+    position: relative;
+    left: -10px;
 }
 th#headertitleToDo{
     text-align: left;
@@ -39,6 +45,7 @@ img#frontpageimgcat{
     width: 100px;
     height: 100px;
 }
+
 script {
     font-family: Calibri;
 }
@@ -49,14 +56,17 @@ table {
     font-family: Calibri;
     width: 100%;
 }
+/* CSS assignment 3 obligated: absolute */
 table#frontpagetable {
     font-family: Calibri;
     text-align: center;
+    position: absolute;
+    top: 330px;
 }
 ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin: 1px;
+    padding: 5px;
     overflow: auto;
     background-color: #333333;
 }
@@ -74,6 +84,18 @@ li a {
     text-decoration: none;
 }
 
+/* CSS assignment 3 obligated: hover, active, before, after */
 li a:hover {
     background-color: #111111;
+}
+
+li a:active{
+    background-color: forestgreen;
+}
+
+li a:before {
+    content: "*";
+}
+td.texttable:after {
+    content: ".";
 }
