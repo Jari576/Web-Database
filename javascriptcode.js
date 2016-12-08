@@ -33,6 +33,10 @@ function sortByalphabet() {
     taskarray.sortByAlphabet();
 }
 
+function sortByImportance() {
+    taskarray.sortByImportance();
+}
+
 function writeTaskToHTML(parameters) {
     var task = parameters.task;
     var text =
