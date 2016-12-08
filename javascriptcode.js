@@ -9,17 +9,25 @@ $(document).ready(function () {
             alert("All fields should be filled out");
             return;
         }
-        var i;
-       // for (i = 0; i < taskarray.size; i++) {
-//            if (x.elements[1].value == taskarray[i].getImportance()) {
-//                alert("no two tasks can have the same importance");
-//                return;
-//            }
-//        }
-        getToday();
+        for (var i = 0; i < taskarray.size; i++) {
+            console.log(i);
+            if (x.elements[1].value == taskarray[i].getImportance()) {
+                alert("no two tasks can have the same importance");
+                return;
+            }
+        }
+
+        //checkdate
+        var dates = [getToday(), x.elements[2].value];
+        dates.sort();
+        if (dates[0] == (x.elements[2].value)) {
+            alert("date has already passed");
+            return;
+        }
 
         var temptask = new task(x.elements[0].value, x.elements[1].value, x.elements[2].value, number)
         taskarray.push(temptask);
+        writeTaskArrayToHTML(taskarray);
         writeTaskArrayToHTML(taskarray);
         writeTaskToHTML({task: temptask});
         number++;
@@ -38,7 +46,7 @@ function writeTaskToHTML(parameters) {
     var task = parameters.task;
     var text =
         "<tr class='" + task.getNumber() + "'>" +
-        "<td id='" + task.getNumber() + "'>" + task.getName() + " <button onclick='deleteListItem(" + task.getNumber() + ")'>change</button></td>" +
+        "<td id='" + task.getNumber() + "'>" + task.getName() + " <button onclick='changetask(" + task.getNumber() + ", name)'>change</button></td>" +
         "<td>" + task.getImportance() + "</td>" +
         "<td>" + task.getDuedate() + "</td>" +
         "<td> <button onclick='deleteListItem(" + task.getNumber() + ")'>Delete task</button> </td>" +
@@ -48,15 +56,21 @@ function writeTaskToHTML(parameters) {
 
 function getToday() {
     var d = new Date();
-    var dateString = d.getFullYear() + "-" + d.getMonth() + 1 + "-" + d.getDate();
-    console.log(dateString)
+    var maand = d.getMonth() + 1;
+    var dag = d.getDate();
+    if (dag < 10) {
+        dag = "0" + dag;
+    }
+    var dateString = d.getFullYear() + "-" + maand + "-" + dag;
+    return dateString;
 }
 
 function changetask(id, type) {
-    $("#" + id + ", " + type).html("<b>Hello world!</b>");
+    $("#" + id + type).html("");
 }
 
-function deleteListItem(id) {
+function deleteListItem(id, array) {
+    array.remove();
     $("tr").remove("." + id);
 }
 
@@ -94,6 +108,3 @@ function task(name, importance, duedate, number) {
         return true;
     }
 }
-
-
-
