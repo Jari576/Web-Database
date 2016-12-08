@@ -70,7 +70,7 @@ function changetask(id, type) {
 }
 
 function deleteListItem(id, array) {
-    array.remove();
+
     $("tr").remove("." + id);
 }
 
