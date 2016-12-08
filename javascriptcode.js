@@ -1,8 +1,8 @@
 var taskarray = new taskArray();
+var sortingtype = "importance";
 $(document).ready(function () {
     "use strict";
     var number = 0;
-
     $("#addtask").click(function () {
         var x = document.getElementById("form1");
 
@@ -21,20 +21,30 @@ $(document).ready(function () {
 
         var temptask = new task(x.elements[0].value, x.elements[1].value, x.elements[2].value, number);
         taskarray.addTask({task: temptask});
+        if(sortingtype == "importance"){
+            sortByalphabet();
+        } else if(sortingtype == "alphabet") {
+            sortByalphabet();
+        } else if(sortingtype == "duedate") {
+            sortByDueDate();
+        }
         taskarray.toHTML();
         number++;
-    });
-    $("#alfabet").click(function () {
-       taskarray.sortByAlphabet();
     });
 });
 
 function sortByalphabet() {
     taskarray.sortByAlphabet();
+    sortingtype = "alphabet";
 }
 
 function sortByImportance() {
     taskarray.sortByImportance();
+    sortingtype = "importance";
+}
+function sortByDueDate() {
+    taskarray.sortByDueDate();
+    sortingtype = "duedate";
 }
 
 function writeTaskToHTML(parameters) {
@@ -69,7 +79,6 @@ function deleteListItem(id) {
     taskarray.deleteTask(id)
     $("tr").remove("." + id);
 }
-
 
 function taskArray() {
     this.array = [];
@@ -108,6 +117,16 @@ function taskArray() {
         });
         this.toHTML();
     };
+    this.sortByDueDate = function () {
+        this.array.sort(function(a, b){
+            var x = a.getDuedate().toLowerCase();
+            var y = b.getDuedate().toLowerCase();
+            if (x < y) {return -1;}
+            if (x > y) {return 1;}
+            return 0;
+        });
+        this.toHTML();
+    }
 }
 
 function task(name, importance, duedate, number) {
