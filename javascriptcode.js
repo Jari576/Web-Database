@@ -9,13 +9,14 @@ $(document).ready(function () {
             alert("All fields should be filled out");
             return;
         }
-        /*var i;
-         for (i = 0; i < taskarray.size; i++) {
-         if (x.elements[1].value == taskarray[i].getImportance()) {
-         alert("no two tasks can have the same importance");
-         return;
-         }
-         } */
+        var i;
+       // for (i = 0; i < taskarray.size; i++) {
+//            if (x.elements[1].value == taskarray[i].getImportance()) {
+//                alert("no two tasks can have the same importance");
+//                return;
+//            }
+//        }
+        getToday();
 
         var temptask = new task(x.elements[0].value, x.elements[1].value, x.elements[2].value, number)
         taskarray.push(temptask);
@@ -43,6 +44,12 @@ function writeTaskToHTML(parameters) {
         "<td> <button onclick='deleteListItem(" + task.getNumber() + ")'>Delete task</button> </td>" +
         "</tr>";
     $("table#tasklist").append(text);
+}
+
+function getToday() {
+    var d = new Date();
+    var dateString = d.getFullYear() + "-" + d.getMonth() + 1 + "-" + d.getDate();
+    console.log(dateString)
 }
 
 function changetask(id, type) {
