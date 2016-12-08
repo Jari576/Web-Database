@@ -1,42 +1,8 @@
+/* This is the background colour for all screens */
 body {
     background-color: powderblue;
 }
-/*CSS assignment 3 obligated: margin, padding, border */
-header {
-    margin: 1px;
-    padding: 5px;
-    border: 5px powderblue;
-    color: white;
-    background-color: #333333;
-    clear: left;
-    text-align: center;
-    font-family: Calibri;
 
-}
-th#headerlogo{
-    text-align: left;
-}
-/* CSS assignment 3 obligated: CSS animation */
-@keyframes title {
-    from {color: white;}
-    to {color: aqua;}
-}
-th#headertitle {
-    text-align: center;
-    color: white;
-    animation-name: title;
-    animation-duration: 30s;
-}
-
-/*CSS assignment 3 obligated: position relative */
-th#headerlogin{
-    text-align: right;
-    position: relative;
-    left: -10px;
-}
-th#headertitleToDo{
-    text-align: left;
-}
 h1 {
     font-family: Calibri;
 }
@@ -46,36 +12,103 @@ p {
 div {
     font-family: Calibri;
 }
-img.frontpageimg {
-    width: 120px;
-    height: 120px;
-}
-img#frontpageimgcat{
-    width: 100px;
-    height: 100px;
-}
-
 script {
-    font-family: Calibri;
-}
+     font-family: Calibri;
+ }
 form {
     font-family: Calibri;
 }
+
+/* CSS assignment 3 obligated: margin, padding, border */
+/* Header with our logo and app name. The frontpage also has a log in option */
+header {
+    margin: 1px;
+    padding: 5px;
+    border: 5px powderblue;
+    color: white;
+    background-color: #333333;
+    font-family: Calibri;
+}
+
+/* All text in all tables should be calibri*/
+/* All tables fill the page (or assigned section) from left to right */
 table {
     font-family: Calibri;
     width: 100%;
 }
-table#tasklist{
+
+/* The owl in the header, should be as far left as possible in header */
+th.headerlogo{
     text-align: left;
-    width: 100%;
 }
+
+th.headerlogo2{
+    text-align: right;
+}
+
+/* CSS assignment 3 obligated: CSS animation */
+/* Everything with animation-name 'title' starts with white letters that change aqua */
+@keyframes title {
+    from {color: white;}
+    to {color: aqua;}
+}
+
+/* app name in frontpage only */
+/* Makes use of animation 'title' */
+th#headertitle {
+    text-align: center;
+    color: white;
+    animation-name: title;
+    animation-duration: 10s;
+}
+
+/* Same th#headertitle, now in all screens */
+th#headertitleToDo {
+    text-align: center;
+    color: white;
+    animation-name: title;
+    animation-duration: 10s;
+}
+
+/* CSS assignment 3 obligated: position relative */
+/* Only in frontpage */
+/* Alligned right, but 10px to the left from the most right position */
+th#headerlogin{
+    text-align: right;
+    position: relative;
+    right: 10px;
+}
+
 /* CSS assignment 3 obligated: position absolute */
+/* table with free your mind, organize, enjoy */
+/* position 330px from top of the screen */
 table#frontpagetable {
-    font-family: Calibri;
     text-align: center;
     position: absolute;
     top: 330px;
 }
+
+/* Three images in table#frontpagetable */
+img.frontpageimg {
+    width: 120px;
+    height: 120px;
+}
+
+/* Text in table#frontpagetable */
+/* text is 10px away from the given space in table */
+td.texttable{
+    padding: 10px;
+}
+
+table#tasklist{
+    text-align: left;
+    width: 100%;
+}
+
+
+
+
+/* ul with 'home, news, contact, about' */
 ul {
     list-style-type: none;
     margin: 1px;
@@ -84,11 +117,13 @@ ul {
     background-color: #333333;
 }
 
+/* text within ul, so 'home', 'news', 'contact', 'about' */
 li {
     font-family: Calibri;
     float: left;
 }
 
+/* Block links of 'home', 'news', 'contact', 'about' */
 li a {
     display: block;
     color: white;
@@ -97,18 +132,26 @@ li a {
     text-decoration: none;
 }
 
-/* CSS assignment 3 obligated: hover, active, before, after */
+/* CSS assignment 3 obligated: hover*/
+/* When you hover over a block link 'news', 'home', etc, color changes */
 li a:hover {
     background-color: #111111;
 }
 
+/* CSS assignment 3 obligated: active */
+/* When you click on a block link 'news', 'home', etc, color changes */
 li a:active{
     background-color: forestgreen;
 }
 
+/* CSS assignment 3 obligated: before */
+/* Before the text in the block link as written in the code in frontpage.html, appears a '*' */
 li a:before {
     content: "*";
 }
+
+/* CSS assignment 3 obligated: after */
+/* After the text in the table on the frontpage as written in the code, appears '.' */
 td.texttable:after {
     content: ".";
 }
