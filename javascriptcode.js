@@ -15,7 +15,7 @@ $(document).ready(function () {
          alert("no two tasks can have the same importance");
          return;
          }
-         }*/
+         } */
 
         var temptask = new task(x.elements[0].value, x.elements[1].value, x.elements[2].value, number)
         taskarray.push(temptask);

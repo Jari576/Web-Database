@@ -9,28 +9,52 @@
 
 <body><!-- style="background-color: lavenderblush" -->
 
+<header>
+    <table id="headertable">
+        <tr>
+            <th id="headerlogo"><img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/2133/flat_icons-graficheria.it-06.png"
+                     alt="afbeelding" width="142" height="142" title="Get all your tasks done in no time"></th>
+            <th id="headertitle"><h1>Get shit done</h1></th>
+            <th id="headerlogin">    <div>
+                Username:<br>
+                <input type="text" name="user" value="" autofocus required><br> <br>
+                Password:<br>
+                <input type="password" name="pass" required>
+            </div>
+                <br>
+                <!--  <button type="button" onclick="window.location.href='ToDo.html'">Login</button> -->
+                <a href="ToDo.html">
+                    <button type="button">Login</button>
+                </a></th>
+        </tr>
+    </table>
+</header> <br>
+
 <ul>
     <li><a href="frontpage.html">Home</a></li>
     <li><a href="NotLoggedIn.html">News</a></li>
     <li><a href="NotLoggedIn.html">Contact</a></li>
     <li><a href="NotLoggedIn.html">About</a></li>
-</ul>
-
-<h1><img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/2133/flat_icons-graficheria.it-06.png"
-         alt="afbeelding" width="142" height="142" title="Get all your tasks done in no time">Get shit done</h1>
+</ul> <br>
 
 <form>
-    <div>
-        Username:<br>
-        <input type="text" name="user" value="" autofocus required><br> <br>
-        Password:<br>
-        <input type="password" name="pass" required>
-    </div>
-    <br>
-    <!--  <button type="button" onclick="window.location.href='ToDo.html'">Login</button> -->
-    <a href="ToDo.html">
-        <button type="button">Login</button>
-    </a>
+    <table id="frontpagetable">
+        <tr>
+            <th>Free your mind</th>
+            <th>Organize</th>
+            <th>Enjoy</th>
+        </tr>
+        <tr>
+            <td><br><img class="frontpageimg" src="https://d30y9cdsu7xlg0.cloudfront.net/png/51575-200.png" alt=""></td>
+            <td><br><img class="frontpageimg" src="http://www.freeiconspng.com/uploads/review-icon-13.png" alt=""></td>
+            <td><br><img id="frontpageimgcat" src="https://d30y9cdsu7xlg0.cloudfront.net/png/196644-200.png" alt=""></td>
+        </tr>
+        <tr>
+            <td>Get those little voices in your head to shut up by writing down all your tasks </td>
+            <td>Organize your tasks and make a planning to get the best out of your day</td>
+            <td>Once you've done everything on your list, you can finally rest in peace and do the things you enjoy</td>
+        </tr>
+    </table>
 </form>
 </body>
 </html>

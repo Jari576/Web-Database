@@ -1,6 +1,27 @@
 body {
     background-color: powderblue;
 }
+header {
+    padding: 1em;
+    color: white;
+    background-color: #333333;
+    clear: left;
+    text-align: center;
+    font-family: Calibri;
+    border: 5px powderblue;
+}
+th#headerlogo{
+    text-align: left;
+}
+th#headertitle{
+    text-align: center;
+}
+th#headerlogin{
+    text-align: right;
+}
+th#headertitleToDo{
+    text-align: left;
+}
 h1 {
     font-family: Calibri;
 }
@@ -10,6 +31,14 @@ p {
 div {
     font-family: Calibri;
 }
+img.frontpageimg {
+    width: 80px;
+    height: 80px;
+}
+img#frontpageimgcat{
+    width: 100px;
+    height: 100px;
+}
 script {
     font-family: Calibri;
 }
@@ -18,12 +47,17 @@ form {
 }
 table {
     font-family: Calibri;
+    width: 100%;
+}
+table#frontpagetable {
+    font-family: Calibri;
+    text-align: center;
 }
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
     background-color: #333333;
 }
 
