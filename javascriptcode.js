@@ -51,7 +51,7 @@ function writeTaskToHTML(parameters) {
     var task = parameters.task;
     var text =
         "<tr class='" + task.getNumber() + "'>" +
-        "<td id='" + task.getNumber() + "'>" + task.getName() + " <button onclick='changetask(" + task.getNumber() + ", name)'>change</button></td>" +
+        "<td id='" + task.getNumber() + "'>" + task.getName() + " <button onclick='changetask1(" + task.getNumber() + ", name)'>change</button></td>" +
         "<td>" + task.getImportance() + "</td>" +
         "<td>" + task.getDuedate() + "</td>" +
         "<td> <button onclick='deleteListItem(" + task.getNumber() + ")'>Delete task</button> </td>" +
@@ -71,12 +71,18 @@ function getToday() {
     return dateString;
 }
 
-function changetask(id, type) {
-    $("#" + id + type).html("");
+function changetask1(id, type) {
+    $("#" + id + type).html("<input id='name' type='text' name='taskname'><button onclick='changetask2()'>change</button>");
+}
+
+function changetask2(id, type) {
+    var x = document.getElementById(name);
+    console.log(x);
+    $("#" + id + type).html();
 }
 
 function deleteListItem(id) {
-    taskarray.deleteTask(id)
+    taskarray.deleteTask(id);
     $("tr").remove("." + id);
 }
 
