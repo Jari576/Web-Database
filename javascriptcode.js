@@ -42,7 +42,7 @@ function writeTaskToHTML(parameters) {
         "<td>" + task.getDuedate() + "</td>" +
         "<td> <button onclick='deleteListItem(" + task.getNumber() + ")'>Delete task</button> </td>" +
         "</tr>";
-    $("table").append(text);
+    $("table#tasklist").append(text);
 }
 
 function changetask(id, type) {

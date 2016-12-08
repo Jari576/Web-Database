@@ -56,6 +56,10 @@ table {
     font-family: Calibri;
     width: 100%;
 }
+table#tasklist{
+    text-align: left;
+    width: 100%;
+}
 /* CSS assignment 3 obligated: absolute */
 table#frontpagetable {
     font-family: Calibri;
