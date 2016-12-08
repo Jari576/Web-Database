@@ -1,7 +1,8 @@
+var taskarray = new taskArray();
 $(document).ready(function () {
     "use strict";
     var number = 0;
-    var taskarray = new taskArray();
+
     $("#addtask").click(function () {
         var x = document.getElementById("form1");
 
@@ -27,6 +28,10 @@ $(document).ready(function () {
        taskarray.sortByAlphabet();
     });
 });
+
+function sortByalphabet() {
+    taskarray.sortByAlphabet();
+}
 
 function writeTaskToHTML(parameters) {
     var task = parameters.task;
@@ -56,7 +61,8 @@ function changetask(id, type) {
     $("#" + id + type).html("");
 }
 
-function deleteListItem(id, array) {
+function deleteListItem(id) {
+    taskarray.deleteTask(id)
     $("tr").remove("." + id);
 }
 
@@ -68,6 +74,15 @@ function taskArray() {
         console.log(task);
         this.array.push(task);
 
+    };
+    this.deleteTask = function (input) {
+        var temparray = [];
+        for(var i = 0; i<this.array.length; i++){
+            if(this.array[i].getNumber() != input){
+                temparray.push(this.array[i]);
+            }
+        }
+        this.array = temparray;
     };
     this.toHTML = function () {
         for(var i =0; i<this.array.length; i++){
