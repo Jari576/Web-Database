@@ -37,7 +37,6 @@ function sortByalphabet() {
     taskarray.sortByAlphabet();
     sortingtype = 2;
 }
-
 function sortByImportance() {
     taskarray.sortByImportance();
     sortingtype = 1;
@@ -51,7 +50,7 @@ function writeTaskToHTML(parameters) {
     var task = parameters.task;
     var text =
         "<tr class='" + task.getNumber() + "'>" +
-        "<td id='" + task.getNumber() + "'>" + task.getName() + " <button onclick='changetask1(" + task.getNumber() + ", \"name\")'>change</button></td>" +
+        "<td id='" + task.getNumber() + "'>" + task.getName() + " <button onclick='changename1(" + task.getNumber() + ", \"name\")'>change</button></td>" +
         "<td>" + task.getImportance() + "</td>" +
         "<td>" + task.getDuedate() + "</td>" +
         "<td> <button onclick='deleteListItem(" + task.getNumber() + ")'>Delete task</button> </td>" +
@@ -71,18 +70,15 @@ function getToday() {
     return dateString;
 }
 
-function changetask1(id, type) {
-    console.log(id);
-    console.log(type);
-    $("#" + id).html("<input id='edit_" + id + "' type='text' name='taskname'><button onclick='changetask2(" + id + ")'>change</button>");
+function changename1(id, type) {
+    $("#" + id).html("<input id='name_" + id + "' type='text' name='taskname'><button onclick='changename2(" + id + ")'>change</button>");
 }
 
-function changetask2(id) {
-    console.log(id);
-
-    var x = document.getElementById("edit_"+id).value;
-    console.log(x);
-    $("#" + id).html(x);
+function changename2(id) {
+    var x = document.getElementById("name_"+id).value;
+    taskarray.deleteTask(id);
+    taskarray.addTask(x, taskarray.getTaskById(id), taskarray)
+    $("#" + id).html(x + " <button onclick='changename1(" + id + ", \"name\")'>change</button>");
 }
 
 function deleteListItem(id) {
@@ -92,6 +88,13 @@ function deleteListItem(id) {
 
 function taskArray() {
     this.array = [];
+    this.getTaskById = function (id) {
+        for(var i = 0; i<this.array; i++) {
+            if(this.array[i].getNumber() == id) {
+                return this.array[i];
+            }
+        }
+    }
     this.addTask = function (parameters) {
         var task = parameters.task;
         console.log(task);
