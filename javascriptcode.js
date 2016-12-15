@@ -1,5 +1,5 @@
 var taskarray = new taskArray();
-var sortingtype = "importance";
+var sortingtype = 1;
 $(document).ready(function () {
     "use strict";
     var number = 0;
@@ -19,13 +19,13 @@ $(document).ready(function () {
             return;
         }
 
-        var temptask = new task(x.elements[0].value, x.elements[1].value, x.elements[2].value, number);
+        var temptask = new task(x.elements[0].value, x.elements[1].value, x.elements[2].value, number, getToday());
         taskarray.addTask({task: temptask});
-        if(sortingtype == "importance"){
+        if(sortingtype == 1){
             sortByalphabet();
-        } else if(sortingtype == "alphabet") {
+        } else if(sortingtype == 2) {
             sortByalphabet();
-        } else if(sortingtype == "duedate") {
+        } else if(sortingtype == 3) {
             sortByDueDate();
         }
         taskarray.toHTML();
@@ -35,27 +35,27 @@ $(document).ready(function () {
 
 function sortByalphabet() {
     taskarray.sortByAlphabet();
-    sortingtype = "alphabet";
+    sortingtype = 2;
 }
 
 function sortByImportance() {
     taskarray.sortByImportance();
-    sortingtype = "importance";
+    sortingtype = 1;
 }
 function sortByDueDate() {
     taskarray.sortByDueDate();
-    sortingtype = "duedate";
+    sortingtype = 3;
 }
 
 function writeTaskToHTML(parameters) {
     var task = parameters.task;
     var text =
         "<tr class='" + task.getNumber() + "'>" +
-        "<td id='" + task.getNumber() + "'>" + task.getName() + " <button onclick='changetask1(" + task.getNumber() + ", name)'>change</button></td>" +
+        "<td id='" + task.getNumber() + "'>" + task.getName() + " <button onclick='changetask1(" + task.getNumber() + ", \"name\")'>change</button></td>" +
         "<td>" + task.getImportance() + "</td>" +
         "<td>" + task.getDuedate() + "</td>" +
         "<td> <button onclick='deleteListItem(" + task.getNumber() + ")'>Delete task</button> </td>" +
-        "<td>" + getToday() +"</td>" +
+        "<td>" + task.getAdddate() +"</td>" +
         "</tr>";
     $("table#tasklist").append(text);
 }
@@ -72,13 +72,17 @@ function getToday() {
 }
 
 function changetask1(id, type) {
-    $("#" + id + type).html("<input id='namechanger' type='text' name='taskname'><button onclick='changetask2()'>change</button>");
+    console.log(id);
+    console.log(type);
+    $("#" + id).html("<input id='edit_" + id + "' type='text' name='taskname'><button onclick='changetask2(" + id + ")'>change</button>");
 }
 
-function changetask2(id, type) {
-    var x = document.getElementById("namechanger").value;
+function changetask2(id) {
+    console.log(id);
+
+    var x = document.getElementById("edit_"+id).value;
     console.log(x);
-    $("#" + id + type).html(x);
+    $("#" + id).html(x);
 }
 
 function deleteListItem(id) {
@@ -135,11 +139,12 @@ function taskArray() {
     }
 }
 
-function task(name, importance, duedate, number) {
+function task(name, importance, duedate, number, adddate) {
     this.name = name;
     this.importance = importance;
     this.duedate = duedate;
     this.number = number;
+    this.adddate = adddate
     this.getName = function () {
         return this.name;
     };
@@ -152,6 +157,9 @@ function task(name, importance, duedate, number) {
     this.getNumber = function () {
         return this.number;
     };
+    this.getAdddate = function () {
+        return this.adddate;
+    }
     this.equals = function (parameters) {
         if (!(parameters instanceof task)) {
             return false;
